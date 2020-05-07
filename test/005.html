@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // class
+  class P {
+  }
+
+  class S extends P {
+  }
+
+  console.log(S.__proto__ === Function.prototype); // false
+
+  // 等价于
+  function PP() {
+  }
+
+  function SS() {
+  }
+
+  SS.prototype = new PP();
+  SS.prototype.constructor = SS;
+
+  console.log(SS.__proto__ === Function.prototype); // true
+
+
+</script>
+</html>

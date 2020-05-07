@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // 字面量方式
+  function fn() {
+    return 'fn';
+  }
+  console.log(Object.prototype.toString.call(fn)); // "[object Function]"
+
+  // 构造函数方式
+  let fn2 = new Function('fn2','return \'fn2\'');
+  console.log(Object.prototype.toString.call(fn2)); // "[object Function]"
+
+</script>
+</html>

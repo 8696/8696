@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<ul></ul>
+<script>
+
+  var ul = document.querySelector('ul');
+  var fragment = document.createDocumentFragment();
+  for (let i = 0; i < 10; i++) {
+    fragment.appendChild(document.createElement('li'));
+  }
+  ul.appendChild(fragment);
+
+</script>
+</html>

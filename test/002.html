@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  let obj = {name: 'my name'};
+  let temp = undefined;
+  Object.defineProperty(obj, 'name', {
+    get: function () {
+      return temp || this.name;
+    },
+    set: function (newValue) {
+      temp = newValue;
+    }
+  });
+  obj.name = 'change name';
+  console.log(obj.name); // change name
+</script>
+</body>
+</html>

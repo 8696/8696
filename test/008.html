@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<div style="height: 120vh">1</div>
+<img src="" _src="https://www.baidu.com/img/bd_logo1.png" alt="百度">
+</body>
+<script>
+  function isInView(el) {
+    const top = el.getBoundingClientRect().top;
+    return top <= window.innerHeight;
+  }
+  let img = document.querySelector('img');
+  window.addEventListener('scroll', function () {
+    if (isInView(img)) {
+      if (!img.getAttribute('src')) {
+        img.setAttribute('src', img.getAttribute('_src'));
+      }
+    }
+  });
+</script>
+</html>

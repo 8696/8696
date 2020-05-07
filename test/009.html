@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<button>加密</button>
+</body>
+<script>
+  function loadEncryptionScript(encryptionJSFile) {
+    return new Promise(resolve => {
+      let script = document.createElement('script');
+      script.src = encryptionJSFile; // 该 js 在 window 中挂载加密 encryption 函数
+      document.body.appendChild(script); // 插入到 dom
+      script.onload = function () {
+        resolve(encryption);
+      };
+    });
+  }
+
+  document.querySelector('button').addEventListener('click', function () {
+    // 动态加载 encryption.js
+    loadEncryptionScript('encryption.js')
+      .then(encryption => {
+        console.log(encryption('hello'));
+      });
+  });
+</script>
+</html>

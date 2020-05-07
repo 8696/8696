@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 定义构造函数
+
+  function T() {
+    if (!(this instanceof T)) {
+      throw new Error('该构造函数必须使用new调用');
+    }
+  }
+  function Y() {
+  }
+  Y.prototype = new T(); // 原型继承
+  Y.prototype.say = T; // 添加方法
+  Y.prototype.constructor = Y;
+  new Y().say(); // 通过
+</script>
+</body>
+
+</html>
