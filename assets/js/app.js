@@ -118,6 +118,7 @@ function padTo(number, length) {
 let topLineEl = document.createElement('div');
 topLineEl.classList.add('top-line');
 document.body.appendChild(topLineEl);
+
 function topLine() {
   topLineEl.style.width =
     (document.querySelector('.content ').scrollTop
@@ -141,6 +142,7 @@ function hashChangeListener() {
     url = hash;
   }
   url = url.replace('#', '');
+
 
   getRemoteMd(url).then(md => {
 
@@ -189,7 +191,12 @@ function hashChangeListener() {
     }
     setLikeNewTab();
 
+    // 设置 Title
+    let mdTitle = url.replace('.md', '').split('/').pop();
 
+    document.title = decodeURI(mdTitle + ' - 8696.icode.link');
+
+    //
   });
 }
 
