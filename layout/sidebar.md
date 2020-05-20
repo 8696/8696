@@ -2,7 +2,7 @@
 
 - ### 前言
     + [README](#README.md)
-    + [源码](https://github.com/8696)
+    + [源码](https://github.com/8696/8696)
     + [GitHub](https://github.com/8696)
 
 - ### JavaScript

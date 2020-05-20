@@ -36,7 +36,6 @@ document.body.innerHTML = `
 <div class="fixed">
   <div class="icon"><img class="toggle-view-mode" src="/assets/images/yj.png" alt=""></div>
   <div class="icon"><img class="toggle-sidebar" src="/assets/images/menu.png" alt=""></div>
-    <div class="icon"><img class="github-link" src="/assets/images/github.png" alt=""></div>
   <div class="icon"><img class="go-top" src="/assets/images/go-top.png" alt=""></div>
 </div>
 `;
@@ -53,6 +52,7 @@ function setLikeNewTab() {
 
 // 加载 sidebar
 function getSidebar() {
+
   new Http().get('/layout/sidebar.md')
     .then(md => {
       document.querySelector('.sidebar .section').innerHTML = marked(md);
@@ -88,6 +88,7 @@ let timer = 0;
 
 // 加载远程 md
 function getRemoteMd(url) {
+
   clearTimeout(timer);
   return new Promise((resolve, reject) => {
     if (cache.has(url)) {
@@ -209,10 +210,6 @@ document.querySelector('.go-top').addEventListener('click', () => {
   document.querySelector('.content').scrollTo(0, 0);
 });
 
-// github
-document.querySelector('.github-link').addEventListener('click', () => {
-  window.open('https://github.com/8696');
-});
 
 let toggleSidebar = (function () {
   let sidebar = document.querySelector('.sidebar');
