@@ -53,7 +53,7 @@ function setLikeNewTab() {
 // 加载 sidebar
 function getSidebar() {
 
-  new Http().get('/layout/sidebar.md')
+  new Http().get(`/layout/sidebar.md?t=${new Date().getTime()}`)
     .then(md => {
       document.querySelector('.sidebar .section').innerHTML = marked(md);
 
@@ -95,7 +95,7 @@ function getRemoteMd(url) {
       return resolve(cache.get(url));
     }
     new Http()
-      .get(url)
+      .get(`${url}?t=${new Date().getTime()}`)
       .then(md => {
         cache.set(url, md);
         resolve(md);
