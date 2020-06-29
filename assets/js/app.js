@@ -134,6 +134,9 @@ document.querySelector('.content').addEventListener('scroll', topLine);
 
 topLine();
 
+let scrollCache = {};
+let nowUrl = window.location.href;
+
 // url change 监听函数
 function hashChangeListener() {
   let url = '', hash = location.hash;
@@ -143,7 +146,8 @@ function hashChangeListener() {
     url = hash;
   }
   url = url.replace('#', '');
-
+  // 保存上一次的滚动条
+  scrollCache[nowUrl] = document.querySelector('.content').scrollTop;
 
   getRemoteMd(url).then(md => {
 
@@ -184,7 +188,6 @@ function hashChangeListener() {
 
 
     }, 10);
-    document.querySelector('.content').scrollTo(0, 0);
 
 
     if (window.innerWidth < 600) {
@@ -197,6 +200,10 @@ function hashChangeListener() {
 
     document.title = decodeURI(mdTitle + ' - 8696.icode.link');
 
+    // document.querySelector('.content').scrollTo(0, 0);
+    nowUrl = window.location.href;
+
+    document.querySelector('.content').scrollTop = scrollCache[nowUrl] || 0;
     //
   });
 }
