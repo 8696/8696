@@ -247,6 +247,7 @@ document.querySelector('.toggle-sidebar').addEventListener('click', () => {
 // 移动端默认隐藏菜单
 if (window.innerWidth < 600) {
   toggleSidebar.hide();
+  alert('移动端访问可在右下角切换菜单');
 }
 
 // 切换夜间模式
