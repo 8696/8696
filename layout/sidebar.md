@@ -12,7 +12,10 @@
 
     + [再谈对象和原型链](#doc/javascript/再谈对象和原型链.md)
 
+    + [JS继承方案](#doc/javascript/JS继承方案.md)
+
     + [双等和全等比较规则](#doc/javascript/双等和全等比较规则.md)
+
 
 - ### ES2015+
 
