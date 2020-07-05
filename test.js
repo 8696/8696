@@ -1,45 +1,44 @@
-function extend(S, P) {
-  // 创建父类原型副本
-  let prototype = Object.create(P.prototype);
-  prototype.constructor = S;
-  S.prototype = prototype;
+//观察者列表
+class ObserverList {
+  constructor() {
+    this.observerList = [];
+  }
+  // 添加观察者
+  add(obj) {
+    return this.observerList.push(obj);
+  }
 }
 
-// 父类
-function Person(name) {
-  this.name = name;
-  this.teachList = [];
+//目标
+class Subject {
+  constructor() {
+    this.observers = new ObserverList();
+  }
+  // 添加观察者
+  addObserver(observer) {
+    this.observers.add(observer);
+  }
+  // 发布通知
+  notify() {
+    this.observers.observerList.forEach(observer => {
+      // 调用观察者接口
+      observer.update();
+    });
+  }
 }
 
-Person.prototype.sayName = function () {
-  console.log('我的名字：' + this.name);
-};
-
-Person.prototype.sayTeachList = function () {
-  console.log('授课列表：' + this.teachList.join('-'));
-};
-
-// 子类
-function Teacher(name, age) {
-  Person.call(this, name);
-  this.age = age;
+//观察者
+class Observer {
+  // 接收通知接口
+  update() {
+    console.log('update');
+  }
 }
 
-// 将父类原型指向子类
-extend(Teacher, Person);
+let subject = new Subject();
+subject.addObserver(new Observer());
+subject.notify(); // update
 
-// 扩展子类方法
-Teacher.prototype.sayAge = function () {
-  console.log('我的年龄：' + this.age);
-};
-
-let zhangSan = new Teacher('张三', 23);
-let liSi = new Teacher('李四', 24);
-zhangSan.teachList.push('语文');
-liSi.teachList.push('数学');
-//
-zhangSan.sayAge();  // 我的年龄：23
-liSi.sayAge();    // 我的年龄：24
-zhangSan.sayTeachList(); // 授课列表：语文
-liSi.sayTeachList();  // 授课列表：数学
-
+let subject2 = new Subject();
+subject2.addObserver(new Observer());
+subject2.notify(); // update
